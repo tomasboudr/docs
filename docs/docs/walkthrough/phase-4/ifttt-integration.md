@@ -1,6 +1,6 @@
 # IFTTT Integration
 
-Want to be able to set or cancel temp targets from your Pebble, Alexa, or anything supports IFTT?  You need an IFTTT.com and Maker account.  Check it the YouTube Video below to see some sample integrations:
+Want to be able to set or cancel temp targets from your Pebble, Alexa, an Amazon Dash Button, or anything supports IFTT?  You need an IFTTT.com and Maker account.  Check it the YouTube Video below to see some sample integrations:
 
 <a href="https://youtu.be/0ck23JTa2Wk" target="_blank"><img src="https://raw.githubusercontent.com/openaps/docs/master/docs/docs/Images/PebbleTempTargets.png" alt="Pebble and OpenAps" width="400" height="400" border="10" title="Click on the hairy arm to watch how it works!" /></a>
 
@@ -11,7 +11,13 @@ Want to be able to set or cancel temp targets from your Pebble, Alexa, or anythi
 * Make sure you have a [Maker account](https://ifttt.com/maker)
 * Find out what your NS hashed secret key is by running the command to find out: `nightscout hash-api-secret <your_secret_key>`
 * Or, open a console window in your browser while viewing your Nightscout site, hit refresh, and your hashed secret key will be shown as "apisecrethash: "xxxxxxxxxx...""
-* Get the app ThisButton for your Pebble
+* If using a Pebble: 
+* * Get the app ThisButton for your Pebble
+* If using a iPhone:
+* * Get the app IFTTT for your phone
+* If using an Amazon Dash Button:
+* * Buy any dash button - but *do not* activate it
+* * You will need a computer or surplus pi that is always on to listen for the buton presses
 
 ## Putting it all together
 
@@ -91,3 +97,13 @@ Want to be able to set or cancel temp targets from your Pebble, Alexa, or anythi
 * It should pull in any existing applets from your IFTTT account that are set to be run by "DoButton". This means if you only added applets/recipes to work with ThisButton on Pebble, you'll need to set additional recipes up. Do similar to the above steps to add new applets; the only difference is to start with If (DoButton) Then (Maker event), aka select "DoButton" for the first tool integration, rather than Maker in both places. 
 * All of the same steps apply for the Maker information for the "Then that" part - insert your URL, select POST, Content Type: application/json, etc. You'll probably want to copy and paste from your other applets, but make sure to edit the text to show that these will be entered by "DoButton" rather than "ThisButton_Maker" or similar.
 * Once you've saved, these applets should show up in your Today widget for IFTTT!
+
+## Setup an Amazon dash button to trigger IFTTT
+![Dash Button](https://camo.githubusercontent.com/2ca733c7bc912bb97b2d8462331e617cdd7c6554/687474703a2f2f692e696d6775722e636f6d2f505030434a33732e706e673f31)
+* Use the dash button to create a physical button to turn on Activity Mode (higher temp target) and hit it when you are walking out the door to walk the dog for example.
+
+Clone the Dasher repo here: https://github.com/maddox/dasher
+
+Then follow the instructions there to do the setup. 
+If you have a Mac then you may find these slight alterations to the setup helpful: https://medium.com/@welovejeff/hacking-the-amazon-dash-button-to-work-with-ifttt-77fe87520ac3#.a6puxiqb2
+
